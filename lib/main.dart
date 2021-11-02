@@ -71,11 +71,11 @@ class MyHomePage extends StatelessWidget {
               alignment: Alignment.center,
             ),
             Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(50),
               child: Text("You will never walk alone!!!",
                   style: TextStyle(color: Colors.red[600], fontSize: 14)),
-              height: 100,
               color: Colors.green[300],
-              alignment: Alignment.center,
             )
           ],
         ));
