@@ -36,6 +36,21 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(this.title)),
+        drawer: Drawer(
+            child: ListView(children: [
+          DrawerHeader(
+              decoration: BoxDecoration(color: Colors.red),
+              child:
+                  Text("First One", style: TextStyle(color: Colors.blue[600]))),
+          ListTile(title: Text("One")),
+          ListTile(
+            title: Text("All Mail Inboxes"),
+            leading: new Icon(Icons.mail),
+          ),
+          Divider(
+            height: 0.2,
+          ),
+        ])),
         body: Column(
           children: [
             Container(
