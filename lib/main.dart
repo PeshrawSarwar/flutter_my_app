@@ -39,19 +39,24 @@ class MyHomePage extends StatelessWidget {
         body: Column(
           children: [
             Container(
-                child: Row(children: [
-                  Container(
-                    child: Text("Profile"),
-                    width: 324.5,
+              margin: EdgeInsets.all(20.0),
+              child: Row(children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 100, 0),
+                  child: Container(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text('Hhahahah',
+                        style: TextStyle(color: Colors.red[600], fontSize: 30)),
                   ),
-                  Container(
-                    child: Text("Menu"),
-                  )
-                ]),
-                color: Colors.red,
-                height: 50),
+                ),
+                Container(child: Text('No you are not!'))
+              ]),
+              color: Colors.green,
+              height: 100,
+              alignment: Alignment.center,
+            ),
             Container(
-              child: Text("You will never walk alone!",
+              child: Text("You will never walk alone!!!",
                   style: TextStyle(color: Colors.red[600], fontSize: 14)),
               height: 100,
               color: Colors.green[300],
