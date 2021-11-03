@@ -39,9 +39,11 @@ class MyHomePage extends StatelessWidget {
         drawer: Drawer(
             child: ListView(children: [
           DrawerHeader(
-              decoration: BoxDecoration(color: Colors.red),
-              child:
-                  Text("First One", style: TextStyle(color: Colors.blue[600]))),
+              decoration: BoxDecoration(color: Colors.red[100]),
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Text("Header",
+                      style: TextStyle(color: Colors.blue[600])))),
           ListTile(title: Text("One")),
           ListTile(
             title: Text("All Mail Inboxes"),
@@ -71,13 +73,30 @@ class MyHomePage extends StatelessWidget {
               alignment: Alignment.center,
             ),
             Container(
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(50),
-              child: Text("You will never walk alone!!!",
-                  style: TextStyle(color: Colors.red[600], fontSize: 14)),
-              color: Colors.green[300],
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.green, width: 10),
+                  borderRadius: BorderRadius.circular(34),
+                  boxShadow: [
+                    new BoxShadow(color: Colors.blue, offset: Offset(2.0, 4.0))
+                  ]),
+
+              // margin: EdgeInsets.all(50),
+              padding: EdgeInsets.all(15),
+              child: Center(
+                child: Text("You will never walk alone!!!",
+                    style: TextStyle(color: Colors.red[600], fontSize: 14)),
+              ),
+              // color: Colors.green[300],
             )
           ],
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            print("ababbaba");
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+        backgroundColor: Colors.white);
   }
 }
