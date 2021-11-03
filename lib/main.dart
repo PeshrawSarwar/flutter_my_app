@@ -38,12 +38,17 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(title: Text(this.title)),
         drawer: Drawer(
             child: ListView(children: [
-          DrawerHeader(
-              decoration: BoxDecoration(color: Colors.red[100]),
-              child: Container(
-                  alignment: Alignment.center,
-                  child: Text("Header",
-                      style: TextStyle(color: Colors.blue[600])))),
+          Container(
+            height: 50,
+            child: DrawerHeader(
+                // margin: EdgeInsets.all(21.0),
+                decoration: BoxDecoration(color: Colors.red[100]),
+                child: Container(
+                    // padding: EdgeInsets.all(10.0),
+                    alignment: Alignment.center,
+                    child: Text("Header",
+                        style: TextStyle(color: Colors.blue[600])))),
+          ),
           ListTile(title: Text("One")),
           ListTile(
             title: Text("All Mail Inboxes"),
@@ -87,6 +92,24 @@ class MyHomePage extends StatelessWidget {
                     style: TextStyle(color: Colors.red[600], fontSize: 14)),
               ),
               // color: Colors.green[300],
+            ),
+            Column(
+              children: [
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "User name",
+                            hintText: "Enter Your Name"))),
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Password",
+                            hintText: "Enter Your Password")))
+              ],
             )
           ],
         ),
