@@ -60,15 +60,64 @@ class MyHomePage extends StatelessWidget {
         ])),
         body: Column(
           children: [
+            Row(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    // create a nice outline button
+                    child: OutlinedButton(
+                        child: Text('Outline Button'),
+                        onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                            side: BorderSide(width: 1, color: Colors.blue))),
+                  ),
+                  Container(
+                    // create an Icon button
+                    child: IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () {
+                        print("Menu button pressed");
+                      },
+                    ),
+                  ),
+                  // create a pop up button with a list of items
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: PopupMenuButton<String>(
+                      onSelected: (String result) {
+                        print(result);
+                      },
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<String>>[
+                        const PopupMenuItem<String>(
+                          value: 'One',
+                          child: Text('One'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'Two',
+                          child: Text('Two'),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'Three',
+                          child: Text('Three'),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
             Container(
-              margin: EdgeInsets.all(20.0),
+              // margin: EdgeInsets.all(50.0),
               child: Row(children: [
                 Padding(
+                  // give it 100px padding on the top and it will disappear
                   padding: EdgeInsets.fromLTRB(0, 0, 100, 0),
                   child: Container(
                     padding: const EdgeInsets.all(30.0),
                     child: Text('Hhahahah',
-                        style: TextStyle(color: Colors.red[600], fontSize: 30)),
+                        softWrap: true,
+                        textDirection: TextDirection.ltr,
+                        textScaleFactor: 1.8,
+                        style: TextStyle(color: Colors.red[50], fontSize: 30)),
                   ),
                 ),
                 Container(child: Text('No you are not!'))
@@ -85,7 +134,7 @@ class MyHomePage extends StatelessWidget {
                     new BoxShadow(color: Colors.blue, offset: Offset(2.0, 4.0))
                   ]),
 
-              // margin: EdgeInsets.all(50),
+              margin: EdgeInsets.all(50),
               padding: EdgeInsets.all(15),
               child: Center(
                 child: Text("You will never walk alone!!!",
@@ -94,23 +143,28 @@ class MyHomePage extends StatelessWidget {
               // color: Colors.green[300],
             ),
             Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
+                Container(
+                    margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(15),
                     child: TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "User name",
-                            hintText: "Enter Your Name"))),
-                Padding(
+                            hintText: "Enter Your Name",
+                            icon: Icon(Icons.person)))),
+                Container(
+                    margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(15),
                     child: TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Password",
-                            hintText: "Enter Your Password")))
+                            hintText: "Enter Your Password",
+                            icon: Icon(Icons.lock)))),
               ],
-            )
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
