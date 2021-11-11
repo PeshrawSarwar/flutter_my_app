@@ -70,6 +70,18 @@ class MyHomePage extends StatelessWidget {
                         side: BorderSide(width: 1, color: Colors.blue))),
               ),
               Container(
+                  child:
+                      ElevatedButton(onPressed: () {}, child: Text('What!'))),
+              Container(
+                  child: InkWell(
+                      splashColor: Colors.blue,
+                      highlightColor: Colors.green,
+                      child: Ink(
+                          width: 100,
+                          height: 100,
+                          child: Center(child: Text('What!'))),
+                      onTap: () {})),
+              Container(
                 // create an Icon button
                 child: IconButton(
                   icon: Icon(Icons.send),
@@ -101,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ]),
             Container(
               margin: EdgeInsets.all(20.0),
@@ -153,7 +165,7 @@ class MyHomePage extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(5),
                     padding: EdgeInsets.all(15),
                     child: TextField(
                         decoration: InputDecoration(
@@ -162,7 +174,7 @@ class MyHomePage extends StatelessWidget {
                             hintText: "Enter Your Name",
                             icon: Icon(Icons.person)))),
                 Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(5),
                     padding: EdgeInsets.all(15),
                     child: TextField(
                         decoration: InputDecoration(
