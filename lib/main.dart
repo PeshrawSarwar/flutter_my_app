@@ -60,7 +60,7 @@ class MyHomePage extends StatelessWidget {
         ])),
         body: Column(
           children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               Container(
                 // create a nice outline button
                 child: OutlinedButton(
@@ -77,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                       splashColor: Colors.blue,
                       highlightColor: Colors.green,
                       child: Ink(
-                          width: 100,
+                          width: 50,
                           height: 100,
                           child: Center(child: Text('What!'))),
                       onTap: () {})),
@@ -92,7 +92,7 @@ class MyHomePage extends StatelessWidget {
               ),
               // create a pop up button with a list of items
               Container(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.all(5),
                 child: PopupMenuButton<String>(
                   onSelected: (String result) {
                     print(result);
@@ -116,11 +116,11 @@ class MyHomePage extends StatelessWidget {
               ),
             ]),
             Container(
-              margin: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
               child: Row(children: [
                 Padding(
                   // give it 100px padding on the top and it will disappear
-                  padding: EdgeInsets.fromLTRB(0, 0, 100, 0),
+                  padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
                   child: Container(
                     padding: const EdgeInsets.all(30.0),
                     child: Text('Hhahahah',
