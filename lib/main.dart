@@ -29,13 +29,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  String name = "";
+  String email = "";
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(this.title)),
+        appBar: AppBar(title: Text(this.widget.title)),
         drawer: Drawer(
             child: ListView(children: [
           Container(
@@ -164,24 +173,49 @@ class MyHomePage extends StatelessWidget {
             Column(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(15),
-                    child: TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "User name",
-                            hintText: "Enter Your Name",
-                            icon: Icon(Icons.person)))),
-                Container(
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(15),
-                    child: TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Password",
-                            hintText: "Enter Your Password",
-                            icon: Icon(Icons.lock)))),
+                Form(
+                    key: _formKey,
+                    child: Column(children: [
+                      Container(
+                          margin: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(15),
+                          child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: "User name",
+                                  hintText: "Enter Your Name",
+                                  icon: Icon(Icons.person)))),
+                      Container(
+                          margin: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(15),
+                          child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: "Password",
+                                  hintText: "Enter Your Password",
+                                  icon: Icon(Icons.lock)))),
+                      ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("Form Validation"),
+                                      content: Text("Form is valid"),
+                                      actions: [
+                                        FlatButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text("OK"))
+                                      ],
+                                    );
+                                  });
+                            }
+                          },
+                          child: Text('Submit!'))
+                    ]))
               ],
             ),
           ],
