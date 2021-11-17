@@ -179,7 +179,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       Container(
                           margin: EdgeInsets.all(5),
                           padding: EdgeInsets.all(15),
-                          child: TextField(
+                          child: TextFormField(
+                              onChanged: (value) {
+                                // setState for changing the value
+                                setState(() {
+                                  name = value;
+                                });
+                              },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your name';
+                                } else if (value.length < 3) {
+                                  return 'Name must be at least 3 characters long';
+                                }
+                                return null;
+                              },
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: "User name",
@@ -197,21 +211,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              print("Validated +  $name");
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      title: Text("Form Validation"),
-                                      content: Text("Form is valid"),
+                                      title: Text("Form Validation " + name),
+                                      content: Text("Form is valid $name"),
                                       actions: [
                                         FlatButton(
                                             onPressed: () {
                                               Navigator.of(context).pop();
+                                              // remove the latest on the previous page
                                             },
                                             child: Text("OK"))
                                       ],
                                     );
                                   });
+                            } else {
+                              print("Not Validated");
                             }
                           },
                           child: Text('Submit!'))
